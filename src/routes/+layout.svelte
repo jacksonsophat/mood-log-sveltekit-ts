@@ -1,22 +1,22 @@
-<script lang="ts">
-	import { supabase } from '$lib/supabaseClient';
-	import { invalidate } from '$app/navigation';
-	import { onMount } from 'svelte';
-	import '../app.css';
-
-	onMount(() => {
-		const {
-			data: { subscription }
-		} = supabase.auth.onAuthStateChange(() => {
-			invalidate('supabase:auth');
-		});
-
-		return () => {
-			subscription.unsubscribe();
-		};
-	});
-</script>
-
-<div class="container" style="padding: 50px 0 100px 0">
-	<slot />
-</div>
+<script>
+	import "../app.css";
+	export let data;
+  </script>
+  
+  <nav class="flex justify-between p-2 bg-pink-300">
+	<a href="/">Home</a>
+	{#if !data.user}
+	  <div>
+		<a href="/login" class="mr-4">Login</a>
+		<a href="/register">Register</a>
+	  </div>
+	{:else}
+	  <a href="/projects/new">Add Project</a>
+	  <div>
+		<img src="https://placeimg.com/80/80/people" alt="" />
+	  </div>
+	{/if}
+  </nav>
+  
+  <slot />
+  

@@ -27,7 +27,8 @@
 	},
 	"type": "module",
 	"dependencies": {
-		"@supabase/auth-helpers-sveltekit": "^0.8.7",
-		"@supabase/supabase-js": "^2.7.1"
+		"daisyui": "^2.51.0",
+		"jwt-decode": "^3.1.2",
+		"pocketbase": "^0.11.0"
 	}
 }
